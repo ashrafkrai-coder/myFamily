@@ -142,11 +142,6 @@ nav button .icon{font-size:1.35rem}
       <div class="stat"><div class="label">Bulan Ini</div><div class="val" id="totalMonth">RM 0</div></div>
       <div class="stat" style="grid-column:span 2"><div class="label">Purata Bulanan</div><div class="val" id="avgMonth">RM 0</div></div>
     </div>
-    <div class="card">
-      <div class="card-title"><span class="icon">📊</span>Trend 12 Bulan</div>
-      <div class="chart" id="chart"></div>
-      <div class="chart-labels" id="chartLabels"></div>
-    </div>
   </div>
   <div id="view-list" class="hidden">
     <div class="card">
@@ -252,15 +247,6 @@ function renderDashboard(){
   document.getElementById('totalMonth').textContent='RM '+totalMonth.toLocaleString('ms-MY',{minimumFractionDigits:0});
   document.getElementById('avgMonth').textContent='RM '+avg.toLocaleString('ms-MY',{minimumFractionDigits:0});
   document.getElementById('trendAll').innerHTML='💎 '+entries.length+' rekod kutipan';
-  renderChart();
-}
-function renderChart(){
-  const now=new Date(),months=[];
-  for(let i=11;i>=0;i--){const d=new Date(now.getFullYear(),now.getMonth()-i,1);months.push({year:d.getFullYear(),month:d.getMonth()+1,label:['Jan','Feb','Mac','Apr','Mei','Jun','Jul','Ogo','Sep','Okt','Nov','Dis'][d.getMonth()],total:0})}
-  entries.forEach(e=>{const d=new Date(e.date);const m=months.find(mm=>mm.year===d.getFullYear()&&mm.month===d.getMonth()+1);if(m)m.total+=+e.amount||0});
-  const max=Math.max(...months.map(m=>m.total),1);
-  document.getElementById('chart').innerHTML=months.map(m=>'<div class="bar" style="height:'+(m.total/max)*100+'%" data-val="RM'+m.total.toFixed(0)+'"></div>').join('');
-  document.getElementById('chartLabels').innerHTML=months.map(m=>'<span>'+m.label+'</span>').join('');
 }
 function renderList(){
   const years=[...new Set(entries.map(e=>new Date(e.date).getFullYear()))].sort((a,b)=>b-a);
