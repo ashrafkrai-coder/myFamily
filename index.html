@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#6366f1">
+<title>Tabung Family Day • Hj KamarulZaman & Hjh Zainab</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍👩‍👧‍👦</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍👩‍👧‍👦</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#6366f1;--accent:#ec4899;--accent-2:#8b5cf6;--success:#10b981;--danger:#ef4444;--text-dark:#1e1b4b;--text-muted:#64748b;--glass-bg:rgba(255,255,255,0.65);--glass-border:rgba(255,255,255,0.4);--glass-shadow:0 8px 32px rgba(99,102,241,0.12);--radius-sm:12px;--radius-md:20px;--radius-lg:28px;--radius-xl:36px}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--text-dark);min-height:100vh;padding-bottom:100px;background:#f0f4ff;position:relative;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(at 20% 10%,rgba(139,92,246,0.35) 0,transparent 50%),radial-gradient(at 80% 0%,rgba(236,72,153,0.25) 0,transparent 50%),radial-gradient(at 0% 80%,rgba(99,102,241,0.3) 0,transparent 50%),radial-gradient(at 90% 90%,rgba(16,185,129,0.2) 0,transparent 50%),linear-gradient(135deg,#eef2ff 0%,#fdf2f8 50%,#ecfdf5 100%);z-index:-2;animation:bgShift 20s ease-in-out infinite alternate}
+@keyframes bgShift{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(25deg)}}
+header{background:var(--glass-bg);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--glass-border);padding:calc(env(safe-area-inset-top) + 16px) 20px 16px;position:sticky;top:0;z-index:10;box-shadow:0 4px 30px rgba(99,102,241,0.08)}
+.header-top{display:flex;align-items:center;gap:12px}
+.logo{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 8px 20px rgba(99,102,241,0.35);flex-shrink:0}
+.header-info{flex:1;min-width:0}
+.header-qr{width:46px;height:46px;border-radius:14px;overflow:hidden;flex-shrink:0;border:1px solid var(--glass-border);box-shadow:0 4px 14px rgba(99,102,241,0.25);display:flex;align-items:center;justify-content:center;background:#fff;text-decoration:none;transition:transform .2s}
+.header-qr:active{transform:scale(.94)}
+.header-qr img{width:100%;height:100%;object-fit:cover}
+.header-title{font-size:1rem;font-weight:800;line-height:1.2;color:var(--text-dark)}
+.header-subtitle{font-size:.75rem;color:var(--text-muted);margin-top:2px;font-weight:500}
+.status-pill{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:.68rem;font-weight:600;background:rgba(99,102,241,0.1);color:var(--primary);margin-top:8px}
+.status-pill.ok{background:rgba(16,185,129,0.15);color:var(--success)}
+.status-pill.err{background:rgba(239,68,68,0.15);color:var(--danger)}
+.status-pill .dot{width:6px;height:6px;border-radius:50%;background:currentColor;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.admin-chip{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;font-size:.68rem;font-weight:700;background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#78350f;margin-left:6px}
+.container{padding:20px 16px;max-width:720px;margin:0 auto}
+.hero{background:linear-gradient(135deg,var(--primary) 0%,var(--accent-2) 50%,var(--accent) 100%);border-radius:var(--radius-xl);padding:28px 24px;margin-bottom:20px;color:#fff;position:relative;overflow:hidden;box-shadow:0 20px 40px rgba(99,102,241,0.3)}
+.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,0.2),transparent 70%);border-radius:50%}
+.hero-content{position:relative;z-index:1}
+.hero-emoji{font-size:2.4rem;margin-bottom:8px;display:block}
+.hero-profile{display:flex;align-items:center;gap:16px}
+.hero-photo{width:84px;height:84px;border-radius:24px;object-fit:cover;border:3px solid rgba(255,255,255,.55);box-shadow:0 10px 24px rgba(0,0,0,.22);flex-shrink:0;background:rgba(255,255,255,.15)}
+.hero-text{flex:1;min-width:0}
+.hero-title{font-size:1.4rem;font-weight:800;line-height:1.25;margin-bottom:4px}
+.hero-couple{font-size:1.05rem;font-weight:600;opacity:.95;margin-bottom:10px}
+.hero-motto{font-size:.82rem;font-style:italic;opacity:.85}
+.hero-badge{display:inline-block;margin-top:14px;padding:6px 14px;border-radius:20px;background:rgba(255,255,255,0.2);backdrop-filter:blur(10px);font-size:.72rem;font-weight:600;border:1px solid rgba(255,255,255,0.3)}
+.card{background:var(--glass-bg);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid var(--glass-border);border-radius:var(--radius-lg);padding:18px;margin-bottom:16px;box-shadow:var(--glass-shadow)}
+.card-title{font-size:.95rem;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.card-title .icon{width:28px;height:28px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.9rem;background:linear-gradient(135deg,var(--primary),var(--accent-2));color:#fff}
+.bento{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:auto auto;gap:12px;margin-bottom:16px}
+.stat{background:var(--glass-bg);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid var(--glass-border);border-radius:var(--radius-md);padding:18px;position:relative;overflow:hidden;box-shadow:var(--glass-shadow);border-left:3px solid var(--primary)}
+.stat:nth-child(2){border-left-color:var(--accent)}
+.stat:nth-child(3){border-left-color:var(--success)}
+.stat.big{grid-row:span 2;background:linear-gradient(135deg,var(--primary),var(--accent-2));color:#fff;border:none}
+.stat .label{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;opacity:.75;margin-bottom:6px}
+.stat .val{font-size:1.5rem;font-weight:800}
+.stat.big .val{font-size:2rem}
+.stat .trend{font-size:.7rem;margin-top:6px;opacity:.8}
+.chart{display:flex;align-items:flex-end;gap:6px;height:140px;padding:10px 4px 0;border-bottom:1.5px dashed rgba(99,102,241,0.2);margin-bottom:8px}
+.chart .bar{flex:1;background:linear-gradient(to top,var(--primary),var(--accent));border-radius:8px 8px 2px 2px;min-height:4px;position:relative;transition:all .4s;cursor:pointer;box-shadow:0 4px 12px rgba(99,102,241,0.25)}
+.chart .bar::after{content:attr(data-val);position:absolute;top:-22px;left:50%;transform:translateX(-50%);background:var(--text-dark);color:#fff;padding:2px 6px;border-radius:6px;font-size:.6rem;font-weight:600;opacity:0;transition:opacity .2s;white-space:nowrap}
+.chart .bar:hover::after{opacity:1}
+.chart-labels{display:flex;gap:6px;font-size:.65rem;color:var(--text-muted);font-weight:600}
+.chart-labels span{flex:1;text-align:center}
+.filters{display:flex;gap:8px;margin-bottom:14px}
+.filters select{flex:1;padding:12px 14px;border:1.5px solid rgba(99,102,241,0.15);border-radius:var(--radius-sm);background:rgba(255,255,255,0.7);font-size:.85rem;font-weight:600;font-family:inherit}
+.entry{display:flex;align-items:center;gap:12px;padding:14px;background:rgba(255,255,255,0.7);border-radius:var(--radius-md);margin-bottom:10px;border:1px solid rgba(255,255,255,0.6)}
+.entry-avatar{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1rem;flex-shrink:0}
+.entry-info{flex:1;min-width:0}
+.entry-amount{font-size:1.05rem;font-weight:800}
+.entry-meta{font-size:.75rem;color:var(--text-muted);margin-top:2px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.entry-meta .tag{padding:1px 8px;background:rgba(99,102,241,0.1);color:var(--primary);border-radius:10px;font-weight:600;font-size:.68rem}
+.entry-actions{display:flex;gap:6px}
+.icon-btn{width:36px;height:36px;border:none;border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.95rem;background:rgba(99,102,241,0.08);color:var(--primary)}
+.icon-btn.danger{background:rgba(239,68,68,0.1);color:var(--danger)}
+.empty{text-align:center;padding:40px 20px;color:var(--text-muted)}
+.empty .emoji{font-size:3.5rem;margin-bottom:10px;display:block}
+.empty .title{font-weight:700;color:var(--text-dark);margin-bottom:4px}
+.fab{position:fixed;bottom:100px;right:20px;width:60px;height:60px;border-radius:20px;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;border:none;font-size:1.8rem;box-shadow:0 12px 30px rgba(99,102,241,0.45);cursor:pointer;z-index:5;display:none}
+.fab.show{display:flex;align-items:center;justify-content:center}
+nav{position:fixed;bottom:0;left:0;right:0;background:var(--glass-bg);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-top:1px solid var(--glass-border);display:flex;justify-content:space-around;padding:8px 12px calc(env(safe-area-inset-bottom) + 8px);z-index:10}
+nav button{background:none;border:none;padding:8px 14px;color:var(--text-muted);font-size:.68rem;font-weight:600;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;font-family:inherit}
+nav button.active{color:var(--primary)}
+nav button .icon{font-size:1.35rem}
+.modal{position:fixed;inset:0;background:rgba(30,27,75,0.5);backdrop-filter:blur(8px);display:none;align-items:flex-end;justify-content:center;z-index:100}
+.modal.show{display:flex}
+.modal-content{background:#fff;border-radius:var(--radius-xl) var(--radius-xl) 0 0;padding:24px 20px calc(env(safe-area-inset-bottom) + 20px);width:100%;max-width:500px;max-height:90vh;overflow-y:auto}
+.modal-handle{width:40px;height:4px;background:#e2e8f0;border-radius:2px;margin:0 auto 16px}
+.modal-content h2{font-size:1.2rem;font-weight:800;margin-bottom:18px}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:.78rem;margin-bottom:6px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.form-group input,.form-group textarea{width:100%;padding:13px 16px;border:1.5px solid #e2e8f0;border-radius:var(--radius-sm);font-size:.95rem;font-family:inherit;background:#f8fafc}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--primary);background:#fff}
+.form-group textarea{resize:vertical;min-height:70px}
+.modal-actions{display:flex;gap:10px;margin-top:20px}
+.modal-actions .btn{flex:1;padding:14px;font-size:.95rem}
+.btn{padding:12px 20px;border:none;border-radius:var(--radius-sm);font-weight:700;cursor:pointer;font-size:.88rem;font-family:inherit;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.btn-primary{background:linear-gradient(135deg,var(--primary),var(--accent-2));color:#fff;box-shadow:0 6px 16px rgba(99,102,241,0.3)}
+.btn-danger{background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff}
+.btn-secondary{background:#f1f5f9;color:var(--text-dark)}
+.toast{position:fixed;top:calc(env(safe-area-inset-top) + 90px);left:50%;transform:translateX(-50%);background:var(--text-dark);color:#fff;padding:12px 22px;border-radius:30px;font-size:.85rem;font-weight:600;z-index:200;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.show{opacity:1}
+.hidden{display:none!important}
+@media (min-width:640px){.bento{grid-template-columns:repeat(4,1fr)}.stat.big{grid-column:span 2;grid-row:span 2}.hero-title{font-size:1.8rem}}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-top">
+    <div class="logo">👨‍👩‍👧‍👦</div>
+    <div class="header-info">
+      <div class="header-title">Family Day <span id="adminBadge" class="admin-chip hidden">✨ ADMIN</span></div>
+      <div class="header-subtitle">Hj KamarulZaman & Hjh Zainab</div>
+      <div id="syncStatus" class="status-pill"><span class="dot"></span>Memuat...</div>
+    </div>
+    <a class="header-qr" id="qrLink" href="MAE%20QR.jpg.jpg" download="MAE QR.jpg.jpg" title="Muat turun QR">
+      <img src="MAE%20QR.jpg.jpg" alt="QR MAE" onerror="this.parentElement.style.display='none'">
+    </a>
+  </div>
+</header>
+<div class="container">
+  <div id="view-dashboard">
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-profile">
+          <img class="hero-photo" src="abah-cek.jpg" alt="Hj KamarulZaman & Hjh Zainab" onerror="this.style.display='none'">
+          <div class="hero-text">
+            <div class="hero-title">Family Day</div>
+            <div class="hero-couple">Hj KamarulZaman & Hjh Zainab</div>
+            <div class="hero-motto">"Bersatu hati, erat bersaudara"</div>
+            <span class="hero-badge">💰 Tabung Kutipan Rasmi</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card" id="adminBar">
+      <div class="card-title"><span class="icon">🔐</span>Akses Admin</div>
+      <button id="loginBtn" class="btn btn-primary" style="width:100%" onclick="loginAdmin()">🔐 Log Masuk Admin</button>
+      <button id="logoutBtnMain" class="btn btn-secondary hidden" style="width:100%;margin-top:10px" onclick="logout()">🚪 Log Keluar</button>
+    </div>
+    <div class="bento">
+      <div class="stat big"><div class="label">Jumlah Keseluruhan</div><div class="val" id="totalAll">RM 0</div><div class="trend" id="trendAll">📊 Keseluruhan kutipan</div></div>
+      <div class="stat"><div class="label">Tahun Ini</div><div class="val" id="totalYear">RM 0</div></div>
+      <div class="stat"><div class="label">Bulan Ini</div><div class="val" id="totalMonth">RM 0</div></div>
+      <div class="stat" style="grid-column:span 2"><div class="label">Purata Bulanan</div><div class="val" id="avgMonth">RM 0</div></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="icon">📊</span>Trend 12 Bulan</div>
+      <div class="chart" id="chart"></div>
+      <div class="chart-labels" id="chartLabels"></div>
+    </div>
+  </div>
+  <div id="view-list" class="hidden">
+    <div class="card">
+      <div class="card-title"><span class="icon">📋</span>Senarai Kutipan</div>
+      <div class="filters">
+        <select id="filterYear"><option value="">Semua Tahun</option></select>
+        <select id="filterMonth">
+          <option value="">Semua Bulan</option>
+          <option value="1">Januari</option><option value="2">Februari</option>
+          <option value="3">Mac</option><option value="4">April</option>
+          <option value="5">Mei</option><option value="6">Jun</option>
+          <option value="7">Julai</option><option value="8">Ogos</option>
+          <option value="9">September</option><option value="10">Oktober</option>
+          <option value="11">November</option><option value="12">Disember</option>
+        </select>
+      </div>
+      <div id="entryList"></div>
+    </div>
+  </div>
+  <div id="view-settings" class="hidden">
+    <div class="card">
+      <div class="card-title"><span class="icon">⚙️</span>Tetapan</div>
+      <div class="form-group"><label>URL Apps Script</label><input type="text" id="apiUrl" placeholder="https://script.google.com/macros/s/.../exec"></div>
+      <div class="form-group"><label>PIN Admin</label><input type="password" id="adminPin" placeholder="Kosongkan jika bukan admin"></div>
+      <button class="btn btn-primary" style="width:100%" onclick="saveSettings()">💾 Simpan Tetapan</button>
+      <button class="btn btn-secondary" style="width:100%;margin-top:10px" onclick="testConnection()">🔗 Uji Sambungan</button>
+      <button class="btn btn-danger" style="width:100%;margin-top:10px" onclick="resetData()">🗑️ Reset Data</button>
+      <button id="logoutBtn" class="btn btn-secondary hidden" style="width:100%;margin-top:10px" onclick="logout()">🚪 Log Keluar</button>
+    </div>
+  </div>
+</div>
+<button class="fab" id="fabAdd" onclick="openAddModal()">+</button>
+<nav>
+  <button class="active" data-view="dashboard" onclick="switchView('dashboard')"><span class="icon">🏠</span>Utama</button>
+  <button data-view="list" onclick="switchView('list')"><span class="icon">📋</span>Senarai</button>
+  <button data-view="settings" onclick="switchView('settings')"><span class="icon">⚙️</span>Tetapan</button>
+</nav>
+<div class="modal" id="entryModal">
+  <div class="modal-content">
+    <div class="modal-handle"></div>
+    <h2 id="modalTitle">Tambah Kutipan</h2>
+    <input type="hidden" id="entryId">
+    <div class="form-group"><label>Tarikh</label><input type="date" id="entryDate" required></div>
+    <div class="form-group"><label>Jumlah (RM)</label><input type="number" id="entryAmount" step="0.01" min="0" placeholder="0.00" required></div>
+    <div class="form-group"><label>Nama Penyumbang</label><input type="text" id="entryName" placeholder="cth: Ali"></div>
+    <div class="form-group"><label>Catatan</label><textarea id="entryNote" placeholder="cth: Kutipan Julai"></textarea></div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal()">Batal</button>
+      <button class="btn btn-primary" onclick="saveEntry()">💾 Simpan</button>
+    </div>
+  </div>
+</div>
+<div class="modal" id="pinModal">
+  <div class="modal-content">
+    <div class="modal-handle"></div>
+    <h2>🔐 Sahkan Admin</h2>
+    <div class="form-group"><input type="password" id="pinInput" placeholder="PIN Admin"></div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closePinModal()">Batal</button>
+      <button class="btn btn-primary" onclick="confirmPin()">✓ Sahkan</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const CONFIG={apiUrl:localStorage.getItem('fd_apiUrl')||'',adminPin:localStorage.getItem('fd_adminPin')||'',cacheKey:'fd_entries_cache'};
+let entries=[],isAdmin=false,pendingAction=null;
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('apiUrl').value=CONFIG.apiUrl;
+  document.getElementById('adminPin').value=CONFIG.adminPin;
+  checkAdmin();loadData();
+  if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
+  ['entryModal','pinModal'].forEach(id=>{document.getElementById(id).addEventListener('click',e=>{if(e.target.id===id){if(id==='entryModal')closeModal();else closePinModal();}});});
+});
+function checkAdmin(){isAdmin=CONFIG.adminPin.trim()!=='';document.getElementById('adminBadge').classList.toggle('hidden',!isAdmin);document.getElementById('fabAdd').classList.toggle('show',isAdmin);document.getElementById('logoutBtn').classList.toggle('hidden',!isAdmin);document.getElementById('loginBtn').classList.toggle('hidden',isAdmin);document.getElementById('logoutBtnMain').classList.toggle('hidden',!isAdmin)}
+function switchView(view){['dashboard','list','settings'].forEach(v=>{document.getElementById('view-'+v).classList.toggle('hidden',v!==view)});document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===view));if(view==='list')renderList();if(view==='dashboard')renderDashboard()}
+async function loadData(){
+  if(!CONFIG.apiUrl){setStatus('err','⚠️ URL belum ditetapkan');return}
+  setStatus('loading','Memuat...');
+  try{
+    const res=await fetch(CONFIG.apiUrl+'?action=get&t='+Date.now());
+    const data=await res.json();
+    if(data.success){entries=data.data||[];localStorage.setItem(CONFIG.cacheKey,JSON.stringify(entries));setStatus('ok','Sync '+new Date().toLocaleTimeString('ms-MY',{hour:'2-digit',minute:'2-digit'}));renderDashboard()}
+    else throw new Error(data.error||'Gagal');
+  }catch(e){
+    const cached=localStorage.getItem(CONFIG.cacheKey);
+    if(cached){entries=JSON.parse(cached);setStatus('err','Offline (cache)');renderDashboard()}
+    else setStatus('err','✗ Gagal sync');
+  }
+}
+function setStatus(type,msg){const el=document.getElementById('syncStatus');el.innerHTML='<span class="dot"></span>'+msg;el.className='status-pill'+(type==='ok'?' ok':type==='err'?' err':'')}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._timer);t._timer=setTimeout(()=>t.classList.remove('show'),2500)}
+function renderDashboard(){
+  const now=new Date(),curYear=now.getFullYear(),curMonth=now.getMonth()+1;
+  const totalAll=entries.reduce((s,e)=>s+(+e.amount||0),0);
+  const totalYear=entries.filter(e=>new Date(e.date).getFullYear()===curYear).reduce((s,e)=>s+(+e.amount||0),0);
+  const totalMonth=entries.filter(e=>{const d=new Date(e.date);return d.getFullYear()===curYear&&d.getMonth()+1===curMonth}).reduce((s,e)=>s+(+e.amount||0),0);
+  const monthsWithData=new Set(entries.map(e=>{const d=new Date(e.date);return d.getFullYear()+'-'+(d.getMonth()+1)})).size;
+  const avg=monthsWithData>0?totalAll/monthsWithData:0;
+  document.getElementById('totalAll').textContent='RM '+totalAll.toLocaleString('ms-MY',{minimumFractionDigits:2,maximumFractionDigits:2});
+  document.getElementById('totalYear').textContent='RM '+totalYear.toLocaleString('ms-MY',{minimumFractionDigits:0});
+  document.getElementById('totalMonth').textContent='RM '+totalMonth.toLocaleString('ms-MY',{minimumFractionDigits:0});
+  document.getElementById('avgMonth').textContent='RM '+avg.toLocaleString('ms-MY',{minimumFractionDigits:0});
+  document.getElementById('trendAll').innerHTML='💎 '+entries.length+' rekod kutipan';
+  renderChart();
+}
+function renderChart(){
+  const now=new Date(),months=[];
+  for(let i=11;i>=0;i--){const d=new Date(now.getFullYear(),now.getMonth()-i,1);months.push({year:d.getFullYear(),month:d.getMonth()+1,label:['Jan','Feb','Mac','Apr','Mei','Jun','Jul','Ogo','Sep','Okt','Nov','Dis'][d.getMonth()],total:0})}
+  entries.forEach(e=>{const d=new Date(e.date);const m=months.find(mm=>mm.year===d.getFullYear()&&mm.month===d.getMonth()+1);if(m)m.total+=+e.amount||0});
+  const max=Math.max(...months.map(m=>m.total),1);
+  document.getElementById('chart').innerHTML=months.map(m=>'<div class="bar" style="height:'+(m.total/max)*100+'%" data-val="RM'+m.total.toFixed(0)+'"></div>').join('');
+  document.getElementById('chartLabels').innerHTML=months.map(m=>'<span>'+m.label+'</span>').join('');
+}
+function renderList(){
+  const years=[...new Set(entries.map(e=>new Date(e.date).getFullYear()))].sort((a,b)=>b-a);
+  const yearSel=document.getElementById('filterYear'),curYear=yearSel.value;
+  yearSel.innerHTML='<option value="">Semua Tahun</option>'+years.map(y=>'<option value="'+y+'" '+(y==curYear?'selected':'')+'>'+y+'</option>').join('');
+  const fy=document.getElementById('filterYear').value,fm=document.getElementById('filterMonth').value;
+  let filtered=[...entries];
+  if(fy)filtered=filtered.filter(e=>new Date(e.date).getFullYear()==fy);
+  if(fm)filtered=filtered.filter(e=>new Date(e.date).getMonth()+1==fm);
+  filtered.sort((a,b)=>new Date(b.date)-new Date(a.date));
+  const list=document.getElementById('entryList');
+  if(filtered.length===0){list.innerHTML='<div class="empty"><span class="emoji">📭</span><div class="title">Tiada rekod</div></div>';return}
+  list.innerHTML=filtered.map(e=>{
+    const d=new Date(e.date);const dateStr=d.toLocaleDateString('ms-MY',{day:'numeric',month:'short',year:'numeric'});
+    const initial=(e.name||'?').charAt(0).toUpperCase();
+    return '<div class="entry"><div class="entry-avatar">'+escapeHtml(initial)+'</div><div class="entry-info"><div class="entry-amount">RM '+(+e.amount).toFixed(2)+'</div><div class="entry-meta"><span>'+dateStr+'</span>'+(e.name?'<span class="tag">'+escapeHtml(e.name)+'</span>':'')+'</div>'+(e.note?'<div style="font-size:.78rem;color:var(--text-muted);margin-top:4px;font-style:italic">"'+escapeHtml(e.note)+'"</div>':'')+'</div>'+(isAdmin?'<div class="entry-actions"><button class="icon-btn" onclick="editEntry(\''+e.id+'\')">✏️</button><button class="icon-btn danger" onclick="deleteEntry(\''+e.id+'\')">🗑️</button></div>':'')+'</div>';
+  }).join('');
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+document.getElementById('filterYear').addEventListener('change',renderList);
+document.getElementById('filterMonth').addEventListener('change',renderList);
+function openAddModal(){if(!isAdmin){requirePin(()=>openAddModal());return}document.getElementById('modalTitle').textContent='Tambah Kutipan';document.getElementById('entryId').value='';document.getElementById('entryDate').value=new Date().toISOString().split('T')[0];document.getElementById('entryAmount').value='';document.getElementById('entryName').value='';document.getElementById('entryNote').value='';document.getElementById('entryModal').classList.add('show')}
+function editEntry(id){if(!isAdmin){requirePin(()=>editEntry(id));return}const e=entries.find(x=>x.id===id);if(!e)return;document.getElementById('modalTitle').textContent='Edit Kutipan';document.getElementById('entryId').value=e.id;document.getElementById('entryDate').value=e.date;document.getElementById('entryAmount').value=e.amount;document.getElementById('entryName').value=e.name||'';document.getElementById('entryNote').value=e.note||'';document.getElementById('entryModal').classList.add('show')}
+function closeModal(){document.getElementById('entryModal').classList.remove('show')}
+async function saveEntry(){
+  const id=document.getElementById('entryId').value,date=document.getElementById('entryDate').value,amount=parseFloat(document.getElementById('entryAmount').value),name=document.getElementById('entryName').value.trim(),note=document.getElementById('entryNote').value.trim();
+  if(!date||isNaN(amount)||amount<0){toast('⚠️ Isi tarikh & jumlah');return}
+  const payload={action:id?'update':'add',pin:CONFIG.adminPin,data:{id:id||('e'+Date.now()),date,amount,name,note}};
+  try{toast('⏳ Menyimpan...');const res=await fetch(CONFIG.apiUrl,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});const r=await res.json();if(r.success){toast('✓ Berjaya');closeModal();loadData()}else toast('✗ '+(r.error||'Gagal'))}catch(e){toast('✗ Ralat')}
+}
+function deleteEntry(id){if(!confirm('Padam rekod ini?'))return;(async()=>{try{const res=await fetch(CONFIG.apiUrl,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'delete',pin:CONFIG.adminPin,data:{id}})});const r=await res.json();if(r.success){toast('✓ Dipadam');loadData()}else toast('✗ '+(r.error||'Gagal'))}catch(e){toast('✗ Ralat')}})()}
+function requirePin(callback){pendingAction=callback;document.getElementById('pinInput').value='';document.getElementById('pinModal').classList.add('show')}
+function closePinModal(){document.getElementById('pinModal').classList.remove('show');pendingAction=null}
+async function confirmPin(){
+  const pin=document.getElementById('pinInput').value;
+  if(!CONFIG.apiUrl){toast('⚠️ URL belum ditetapkan');return}
+  try{const res=await fetch(CONFIG.apiUrl,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'verify',pin})});const r=await res.json();if(r.success){CONFIG.adminPin=pin;localStorage.setItem('fd_adminPin',pin);checkAdmin();closePinModal();toast('✓ Admin disahkan');if(pendingAction){const cb=pendingAction;pendingAction=null;cb()}}else toast('✗ PIN salah')}catch(e){toast('✗ Ralat')}
+}
+function saveSettings(){CONFIG.apiUrl=document.getElementById('apiUrl').value.trim();CONFIG.adminPin=document.getElementById('adminPin').value.trim();localStorage.setItem('fd_apiUrl',CONFIG.apiUrl);localStorage.setItem('fd_adminPin',CONFIG.adminPin);checkAdmin();toast('✓ Tetapan disimpan');if(CONFIG.apiUrl)loadData()}
+async function testConnection(){if(!CONFIG.apiUrl){toast('⚠️ Simpan URL dahulu');return}try{const res=await fetch(CONFIG.apiUrl+'?action=get&t='+Date.now());const data=await res.json();if(data.success){setStatus('ok','✓ '+(data.data?.length||0)+' rekod');toast('✓ Sambungan OK')}else{setStatus('err','✗ Gagal')}}catch(e){setStatus('err','✗ Gagal')}}
+function resetData(){if(!confirm('Padam cache?'))return;localStorage.removeItem(CONFIG.cacheKey);entries=[];renderDashboard();toast('✓ Dipadam')}
+function loginAdmin(){pendingAction=null;document.getElementById('pinInput').value='';document.getElementById('pinModal').classList.add('show')}
+function logout(){if(pendingAction)pendingAction=null;CONFIG.adminPin='';localStorage.removeItem('fd_adminPin');checkAdmin();closePinModal();renderDashboard();renderList();toast('✓ Log keluar')}
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "name": "Tabung Family Day Hj Kamarul Zaman & Hjh Zainab",
+  "short_name": "FamilyDay",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#eef2ff",
+  "theme_color": "#6366f1",
+  "description": "Tabung kutipan rasmi Family Day Hj KamarulZaman & Hjh Zainab",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

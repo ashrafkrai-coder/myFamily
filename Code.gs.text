@@ -1,0 +1,82 @@
+const ADMIN_PIN = '1234';
+const SHEET_NAME = 'Tabung';
+
+function ensureSheet() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sh = ss.getSheetByName(SHEET_NAME);
+  if (!sh) {
+    sh = ss.insertSheet(SHEET_NAME);
+    sh.appendRow(['id','date','amount','name','note','editedBy','timestamp']);
+    sh.getRange(1,1,1,7).setFontWeight('bold').setBackground('#6366f1').setFontColor('#fff');
+    sh.setFrozenRows(1);
+  }
+  return sh;
+}
+
+function doGet(e) {
+  const action = (e && e.parameter && e.parameter.action) || 'get';
+  if (action === 'get') {
+    try {
+      const sh = ensureSheet();
+      const data = sh.getDataRange().getValues();
+      const headers = data[0];
+      const rows = data.slice(1).map(r => {
+        const obj = {};
+        headers.forEach((h,i) => obj[h] = r[i]);
+        return obj;
+      }).filter(r => r.id);
+      return json({success:true, data:rows});
+    } catch (err) {
+      return json({success:false, error:err.message});
+    }
+  }
+  return json({success:false, error:'Action tidak sah'});
+}
+
+function doPost(e) {
+  try {
+    const body = JSON.parse(e.postData.contents);
+    const action = body.action;
+    const pin = body.pin;
+    const data = body.data || {};
+    if (action !== 'get' && pin !== ADMIN_PIN) {
+      return json({success:false, error:'PIN salah'});
+    }
+    const sh = ensureSheet();
+    if (action === 'add') {
+      sh.appendRow([data.id || ('e' + Date.now()), data.date, parseFloat(data.amount) || 0, data.name || '', data.note || '', 'admin', new Date().toISOString()]);
+      return json({success:true});
+    }
+    if (action === 'update') {
+      const all = sh.getDataRange().getValues();
+      for (let i = 1; i < all.length; i++) {
+        if (all[i][0] === data.id) {
+          sh.getRange(i+1, 2, 1, 5).setValues([[data.date, parseFloat(data.amount) || 0, data.name || '', data.note || '']]);
+          sh.getRange(i+1, 6, 1, 2).setValues([['admin', new Date().toISOString()]]);
+          return json({success:true});
+        }
+      }
+      return json({success:false, error:'ID tidak dijumpai'});
+    }
+    if (action === 'delete') {
+      const all = sh.getDataRange().getValues();
+      for (let i = 1; i < all.length; i++) {
+        if (all[i][0] === data.id) {
+          sh.deleteRow(i+1);
+          return json({success:true});
+        }
+      }
+      return json({success:false, error:'ID tidak dijumpai'});
+    }
+    if (action === 'verify') {
+      return json({success: pin === ADMIN_PIN});
+    }
+    return json({success:false, error:'Action tidak sah'});
+  } catch (err) {
+    return json({success:false, error:err.message});
+  }
+}
+
+function json(obj) {
+  return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
+}
