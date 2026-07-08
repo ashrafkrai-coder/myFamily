@@ -169,7 +169,7 @@ nav button .icon{font-size:1.35rem}
   <div id="view-settings" class="hidden">
     <div class="card">
       <div class="card-title"><span class="icon">⚙️</span>Tetapan</div>
-      <div class="form-group"><label>URL Apps Script</label><input type="text" id="apiUrl" placeholder="https://script.google.com/macros/s/.../exec"></div>
+      <div class="form-group"><label>URL Apps Script</label><input type="text" id="apiUrl" placeholder="https://script.google.com/macros/s/.../exec"><small style="display:block;margin-top:6px;color:var(--text-muted);font-size:.7rem">URL ini diwarisi oleh semua pengguna PWA. Orang lain guna terus tanpa tetapkan.</small></div>
       <div class="form-group"><label>PIN Admin</label><input type="password" id="adminPin" placeholder="Kosongkan jika bukan admin"></div>
       <button class="btn btn-primary" style="width:100%" onclick="saveSettings()">💾 Simpan Tetapan</button>
       <button class="btn btn-secondary" style="width:100%;margin-top:10px" onclick="testConnection()">🔗 Uji Sambungan</button>
@@ -182,7 +182,7 @@ nav button .icon{font-size:1.35rem}
 <nav>
   <button class="active" data-view="dashboard" onclick="switchView('dashboard')"><span class="icon">🏠</span>Utama</button>
   <button data-view="list" onclick="switchView('list')"><span class="icon">📋</span>Senarai</button>
-  <button data-view="settings" onclick="switchView('settings')"><span class="icon">⚙️</span>Tetapan</button>
+  <button data-view="settings" id="navSettings" class="hidden" onclick="switchView('settings')"><span class="icon">⚙️</span>Tetapan</button>
 </nav>
 <div class="modal" id="entryModal">
   <div class="modal-content">
@@ -212,7 +212,8 @@ nav button .icon{font-size:1.35rem}
 </div>
 <div class="toast" id="toast"></div>
 <script>
-const CONFIG={apiUrl:localStorage.getItem('fd_apiUrl')||'',adminPin:localStorage.getItem('fd_adminPin')||'',cacheKey:'fd_entries_cache'};
+const DEFAULT_API_URL='https://script.google.com/macros/s/AKfycbwjItGdK8uzoyhsiyM4iv8KqskjIBPTe1lXud51OpxocpNmARFZp6IitdShUfpDBuLM_A/exec';
+const CONFIG={apiUrl:localStorage.getItem('fd_apiUrl')||DEFAULT_API_URL,adminPin:localStorage.getItem('fd_adminPin')||'',cacheKey:'fd_entries_cache'};
 let entries=[],isAdmin=false,pendingAction=null;
 document.addEventListener('DOMContentLoaded',()=>{
   document.getElementById('apiUrl').value=CONFIG.apiUrl;
@@ -221,8 +222,8 @@ document.addEventListener('DOMContentLoaded',()=>{
   if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
   ['entryModal','pinModal'].forEach(id=>{document.getElementById(id).addEventListener('click',e=>{if(e.target.id===id){if(id==='entryModal')closeModal();else closePinModal();}});});
 });
-function checkAdmin(){isAdmin=CONFIG.adminPin.trim()!=='';document.getElementById('adminBadge').classList.toggle('hidden',!isAdmin);document.getElementById('fabAdd').classList.toggle('show',isAdmin);document.getElementById('logoutBtn').classList.toggle('hidden',!isAdmin);document.getElementById('loginBtn').classList.toggle('hidden',isAdmin);document.getElementById('logoutBtnMain').classList.toggle('hidden',!isAdmin)}
-function switchView(view){['dashboard','list','settings'].forEach(v=>{document.getElementById('view-'+v).classList.toggle('hidden',v!==view)});document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===view));if(view==='list')renderList();if(view==='dashboard')renderDashboard()}
+function checkAdmin(){isAdmin=CONFIG.adminPin.trim()!=='';document.getElementById('adminBadge').classList.toggle('hidden',!isAdmin);document.getElementById('fabAdd').classList.toggle('show',isAdmin);document.getElementById('logoutBtn').classList.toggle('hidden',!isAdmin);document.getElementById('loginBtn').classList.toggle('hidden',isAdmin);document.getElementById('logoutBtnMain').classList.toggle('hidden',!isAdmin);document.getElementById('navSettings').classList.toggle('hidden',!isAdmin);if(!isAdmin&&!document.getElementById('view-settings').classList.contains('hidden'))switchView('dashboard')}
+function switchView(view){if(view==='settings'&&!isAdmin){toast('🔐 Tetapan akses admin sahaja');return}['dashboard','list','settings'].forEach(v=>{document.getElementById('view-'+v).classList.toggle('hidden',v!==view)});document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===view));if(view==='list')renderList();if(view==='dashboard')renderDashboard()}
 async function loadData(){
   if(!CONFIG.apiUrl){setStatus('err','⚠️ URL belum ditetapkan');return}
   setStatus('loading','Memuat...');
