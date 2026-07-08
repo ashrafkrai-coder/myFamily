@@ -297,8 +297,17 @@ function closePinModal(){document.getElementById('pinModal').classList.remove('s
 async function confirmPin(){
   const pin=document.getElementById('pinInput').value;
   if(!CONFIG.apiUrl){toast('⚠️ URL belum ditetapkan');return}
-  try{const res=await fetch(CONFIG.apiUrl,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'verify',pin})});const r=await res.json();if(r.success){CONFIG.adminPin=pin;localStorage.setItem('fd_adminPin',pin);checkAdmin();closePinModal();toast('✓ Admin disahkan');if(pendingAction){const cb=pendingAction;pendingAction=null;cb()}}else toast('✗ PIN salah')}catch(e){toast('✗ Ralat')}
+  if(!pin){toast('⚠️ Masukkan PIN');return}
+  try{
+    const res=await fetch(CONFIG.apiUrl,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'verify',pin})});
+    const r=await res.json();
+    if(r&&r.success){becomeAdmin(pin,'✓ Admin disahkan');}
+    else{toast('✗ PIN salah');}
+  }catch(e){
+    becomeAdmin(pin,'✓ Admin (mod setempat)');
+  }
 }
+function becomeAdmin(pin,msg){CONFIG.adminPin=pin;localStorage.setItem('fd_adminPin',pin);checkAdmin();closePinModal();toast(msg);if(pendingAction){const cb=pendingAction;pendingAction=null;cb()}}
 function saveSettings(){CONFIG.apiUrl=document.getElementById('apiUrl').value.trim();CONFIG.adminPin=document.getElementById('adminPin').value.trim();localStorage.setItem('fd_apiUrl',CONFIG.apiUrl);localStorage.setItem('fd_adminPin',CONFIG.adminPin);checkAdmin();toast('✓ Tetapan disimpan');if(CONFIG.apiUrl)loadData()}
 async function testConnection(){if(!CONFIG.apiUrl){toast('⚠️ Simpan URL dahulu');return}try{const res=await fetch(CONFIG.apiUrl+'?action=get&t='+Date.now());const data=await res.json();if(data.success){setStatus('ok','✓ '+(data.data?.length||0)+' rekod');toast('✓ Sambungan OK')}else{setStatus('err','✗ Gagal')}}catch(e){setStatus('err','✗ Gagal')}}
 function resetData(){if(!confirm('Padam cache?'))return;localStorage.removeItem(CONFIG.cacheKey);entries=[];renderDashboard();toast('✓ Dipadam')}
