@@ -161,6 +161,13 @@ nav button .icon{font-size:1.35rem}
       <div id="entryList"></div>
     </div>
   </div>
+  <div id="view-individual" class="hidden">
+    <div class="card">
+      <div class="card-title"><span class="icon">👤</span>Rekod Individu</div>
+      <div id="individualSummary" class="bento" style="margin-bottom:0"></div>
+      <div id="individualList"></div>
+    </div>
+  </div>
   <div id="view-settings" class="hidden">
     <div class="card">
       <div class="card-title"><span class="icon">⚙️</span>Tetapan</div>
@@ -177,6 +184,7 @@ nav button .icon{font-size:1.35rem}
 <nav>
   <button class="active" data-view="dashboard" onclick="switchView('dashboard')"><span class="icon">🏠</span>Utama</button>
   <button data-view="list" onclick="switchView('list')"><span class="icon">📋</span>Senarai</button>
+  <button data-view="individual" onclick="switchView('individual')"><span class="icon">👤</span>Individu</button>
   <button data-view="settings" id="navSettings" class="hidden" onclick="switchView('settings')"><span class="icon">⚙️</span>Tetapan</button>
 </nav>
 <div class="modal" id="entryModal">
@@ -218,7 +226,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   ['entryModal','pinModal'].forEach(id=>{document.getElementById(id).addEventListener('click',e=>{if(e.target.id===id){if(id==='entryModal')closeModal();else closePinModal();}});});
 });
 function checkAdmin(){isAdmin=CONFIG.adminPin.trim()!=='';document.getElementById('adminBadge').classList.toggle('hidden',!isAdmin);document.getElementById('fabAdd').classList.toggle('show',isAdmin);document.getElementById('logoutBtn').classList.toggle('hidden',!isAdmin);document.getElementById('loginBtn').classList.toggle('hidden',isAdmin);document.getElementById('logoutBtnMain').classList.toggle('hidden',!isAdmin);document.getElementById('navSettings').classList.toggle('hidden',!isAdmin);if(!isAdmin&&!document.getElementById('view-settings').classList.contains('hidden'))switchView('dashboard')}
-function switchView(view){if(view==='settings'&&!isAdmin){toast('🔐 Tetapan akses admin sahaja');return}['dashboard','list','settings'].forEach(v=>{document.getElementById('view-'+v).classList.toggle('hidden',v!==view)});document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===view));if(view==='list')renderList();if(view==='dashboard')renderDashboard()}
+function switchView(view){if(view==='settings'&&!isAdmin){toast('🔐 Tetapan akses admin sahaja');return}['dashboard','list','individual','settings'].forEach(v=>{document.getElementById('view-'+v).classList.toggle('hidden',v!==view)});document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===view));if(view==='list')renderList();if(view==='dashboard')renderDashboard();if(view==='individual')renderIndividual()}
 async function loadData(){
   if(!CONFIG.apiUrl){setStatus('err','⚠️ URL belum ditetapkan');return}
   setStatus('loading','Memuat...');
@@ -247,6 +255,7 @@ function renderDashboard(){
   document.getElementById('totalMonth').textContent='RM '+totalMonth.toLocaleString('ms-MY',{minimumFractionDigits:0});
   document.getElementById('avgMonth').textContent='RM '+avg.toLocaleString('ms-MY',{minimumFractionDigits:0});
   document.getElementById('trendAll').innerHTML='💎 '+entries.length+' rekod kutipan';
+  renderIndividual();
 }
 function renderList(){
   const years=[...new Set(entries.map(e=>new Date(e.date).getFullYear()))].sort((a,b)=>b-a);
@@ -266,6 +275,20 @@ function renderList(){
   }).join('');
 }
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function renderIndividual(){
+  const map={};
+  entries.forEach(e=>{const name=(e.name||'?').trim()||'?';if(!map[name])map[name]={name,total:0,count:0};map[name].total+=(+e.amount||0);map[name].count++});
+  const people=Object.values(map).sort((a,b)=>b.total-a.total);
+  const grand=people.reduce((s,p)=>s+p.total,0);
+  document.getElementById('individualSummary').innerHTML='<div class="stat big"><div class="label">Jumlah Individu</div><div class="val">'+people.length+'</div><div class="trend">💰 RM '+grand.toLocaleString('ms-MY',{minimumFractionDigits:2,maximumFractionDigits:2})+'</div></div>';
+  const list=document.getElementById('individualList');
+  if(people.length===0){list.innerHTML='<div class="empty"><span class="emoji">📭</span><div class="title">Tiada rekod</div></div>';return}
+  list.innerHTML=people.map(p=>{
+    const initial=p.name.charAt(0).toUpperCase();
+    const pct=grand>0?Math.round(p.total/grand*100):0;
+    return '<div class="entry"><div class="entry-avatar">'+escapeHtml(initial)+'</div><div class="entry-info" style="flex:1"><div class="entry-amount">'+escapeHtml(p.name)+'</div><div class="entry-meta"><span>'+p.count+' sumbangan</span><span class="tag">RM '+p.total.toLocaleString('ms-MY',{minimumFractionDigits:2,maximumFractionDigits:2})+'</span></div><div style="height:6px;background:rgba(99,102,241,.12);border-radius:4px;margin-top:8px;overflow:hidden"><div style="height:100%;width:'+pct+'%;background:linear-gradient(to right,var(--primary),var(--accent));border-radius:4px"></div></div></div></div>';
+  }).join('');
+}
 document.getElementById('filterYear').addEventListener('change',renderList);
 document.getElementById('filterMonth').addEventListener('change',renderList);
 function openAddModal(){if(!isAdmin){requirePin(()=>openAddModal());return}document.getElementById('modalTitle').textContent='Tambah Kutipan';document.getElementById('entryId').value='';document.getElementById('entryDate').value=new Date().toISOString().split('T')[0];document.getElementById('entryAmount').value='';document.getElementById('entryName').value='';document.getElementById('entryNote').value='';document.getElementById('entryModal').classList.add('show')}
